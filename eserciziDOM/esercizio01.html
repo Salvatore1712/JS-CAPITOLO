@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESERCIZIO 01</title>
+</head>
+<body>
+    <h1><h1 id="titolo">Benvenuto</h1>
+    <button id="btn">Cambia testo</button></h1>
+
+
+    <script>
+        //Quando si clicca il bottone, il testo dell’h1 deve diventare:
+        //seleziona gli elementi
+        const button = document.getElementById("btn")
+        let titolo = document.querySelector("#titolo")
+
+        //add funzione evento
+        button.addEventListener("click", ()=> {
+            titolo.textContent = "Ciao Javascript";
+        })
+
+    </script>
+</body>
+</html>

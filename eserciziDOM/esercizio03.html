@@ -1,0 +1,41 @@
+<!-- Esercizio 3 — Mostrare e nascondere
+HTML
+<p id="messaggio">Messaggio segreto</p>
+<button id="toggle">Mostra/Nascondi</button>
+
+Obiettivo
+Il bottone deve:
+nascondere il testo
+mostrarlo di nuovo al click successivo
+Concetti
+style.display
+eventi click -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESERCIZIO 03</title>
+    <style>
+        .toggle {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <p id="messaggio">Messaggio segreto</p>
+    <button id="toggle">Mostra/Nascondi</button>    
+    
+    <script>
+        //sel elem
+        let pText = document.getElementById("messaggio");
+        const btn = document.getElementById("toggle")
+
+        btn.addEventListener("click", ()=> {
+            pText.classList.toggle("toggle")
+        })
+    </script>
+</body>
+</html>

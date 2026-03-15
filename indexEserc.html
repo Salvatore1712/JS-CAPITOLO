@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List con JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #container {
+            width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #input-container {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        #task-input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        #add-task-btn {
+            padding: 10px 15px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+        #add-task-btn:hover {
+            background-color: #218838;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        li:hover {
+            background-color: #f9f9f9;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .delete-btn {
+            padding: 5px 10px;
+            border: none;
+            background-color: #dc3545;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h1>La mia To-Do List</h1>
+        <div id="input-container">
+            <input type="text" id="task-input" placeholder="Aggiungi una nuova attività...">
+            <button id="add-task-btn">Aggiungi</button>
+        </div>
+        <ul id="task-list">
+            </ul>
+    </div>
+
+    <script>
+        // SOLUZIONE JAVASCRIPT
+        // Attendiamo che il DOM sia completamente caricato prima di eseguire lo script
+document.addEventListener('DOMContentLoaded', () => {
+
+    // 1. Selezioniamo gli elementi principali del DOM
+    const taskInput = document.getElementById('task-input');
+    const addTaskBtn = document.getElementById('add-task-btn');
+    const taskList = document.getElementById('task-list');
+
+    // Funzione per aggiungere una nuova attività
+    function addTask() {
+        // Prendiamo il valore dall'input, togliendo eventuali spazi bianchi all'inizio e alla fine
+        const taskText = taskInput.value.trim();
+
+        // Controlliamo che l'input non sia vuoto
+        if (taskText === '') {
+            alert('Per favore, inserisci un\'attività valida.');
+            return; // Interrompiamo l'esecuzione della funzione
+        }
+
+        // 2. Creiamo i nuovi elementi del DOM
+        const listItem = document.createElement('li'); // Crea <li></li>
+
+        const taskTextSpan = document.createElement('span'); // Crea <span></span>
+        taskTextSpan.textContent = taskText; // Aggiunge il testo: <span>Testo attività</span>
+
+        const deleteBtn = document.createElement('button'); // Crea <button></button>
+        deleteBtn.textContent = 'Elimina'; // Aggiunge il testo: <button>Elimina</button>
+        deleteBtn.className = 'delete-btn'; // Applica la classe CSS: <button class="delete-btn">Elimina</button>
+
+        // 3. "Montiamo" la struttura: aggiungiamo lo span e il bottone come figli dell'elemento li
+        listItem.appendChild(taskTextSpan);
+        listItem.appendChild(deleteBtn);
+
+        // 4. Aggiungiamo il nuovo li completo alla lista ul
+        taskList.appendChild(listItem);
+
+        // 5. Svuotiamo il campo di input per il prossimo inserimento
+        taskInput.value = '';
+    }
+
+    // Aggiungiamo l'event listener al pulsante "Aggiungi"
+    addTaskBtn.addEventListener('click', addTask);
+
+    // Permettiamo di aggiungere l'attività anche premendo il tasto "Invio" nell'input
+    taskInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            addTask();
+        }
+    });
+
+    // Aggiungiamo un unico event listener alla lista <ul> per gestire i click sui suoi figli
+    taskList.addEventListener('click', (event) => {
+        const clickedElement = event.target; // L'elemento specifico che è stato cliccato
+
+        // Controlliamo se è stato cliccato un pulsante "Elimina"
+        if (clickedElement.classList.contains('delete-btn')) {
+            const listItem = clickedElement.parentElement; // Selezioniamo il genitore <li>
+            taskList.removeChild(listItem); // Rimuoviamo il <li> dalla lista
+        }
+
+        // Controlliamo se è stato cliccato lo span con il testo dell'attività
+        if (clickedElement.tagName === 'SPAN') {
+            const listItem = clickedElement.parentElement; // Selezioniamo il genitore <li>
+            listItem.classList.toggle('completed'); // Aggiunge/rimuove la classe .completed
+        }
+    });
+
+});
+
+    </script>
+
+</body>
+</html>

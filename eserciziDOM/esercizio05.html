@@ -1,0 +1,39 @@
+<!-- 
+ Esercizio 5 — Contatore
+HTML
+<h2 id="numero">0</h2>
+<button id="incrementa">+1</button>
+Obiettivo
+Ogni click aumenta il numero.
+Concetti
+variabili
+aggiornare il DOM
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESERCIZIO 05</title>
+</head>
+<body>
+    <h2 id="numero">0</h2>
+    <button id="incrementa">+1</button>
+
+    <script>
+        //selezione elementi
+        let contatore = 0
+        let h2Counter = document.getElementById("numero");
+        let buttonIncrease = document.getElementById("incrementa");
+        let contenutoText = h2Counter.textContent;
+
+        // incremento contatore con click
+        buttonIncrease.addEventListener("click", ()=> {
+            contatore ++;
+            h2Counter.textContent = contatore;
+        })
+
+
+    </script>
+</body>
+</html>

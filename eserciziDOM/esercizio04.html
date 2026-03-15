@@ -1,0 +1,38 @@
+<!-- Esercizio 4 — Leggere input utente
+HTML
+<input id="nome" placeholder="Inserisci il nome">
+<button id="saluta">Saluta</button>
+<p id="output"></p>
+Obiettivo
+Quando clicchi il bottone deve apparire:
+Ciao Marco
+(se l’utente ha scritto Marco)
+Concetti
+.value
+textContent -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESERCIZIO 04</title>
+</head>
+<body>
+    <input id="nome" placeholder="Inserisci il nome">
+    <button id="saluta">Saluta</button>
+    <p id="output"></p>
+
+    <script>
+        //selezionare gli elementi
+        let inputField = document.querySelector("#nome");
+        let pText = document.querySelector("#output")
+        const btn = document.querySelector("#saluta")
+
+        btn.addEventListener("click", ()=> {
+            let textInput = inputField.value;
+            pText.textContent = "Ciao " + textInput
+        })
+    </script>
+</body>
+</html>

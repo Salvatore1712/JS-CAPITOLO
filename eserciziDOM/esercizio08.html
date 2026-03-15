@@ -1,0 +1,46 @@
+<!-- 
+Esercizio 8 — Toggle classe CSS
+CSS
+.attivo {
+  background: yellow;
+}
+HTML
+<p id="paragrafo">Cliccami</p>
+Obiettivo
+Quando si clicca il paragrafo:
+aggiunge la classe
+al click successivo la rimuove
+Concetti
+classList.toggle
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESERCIZIO 08</title>
+    <style>
+        .attivo {
+            background: yellow;
+        }
+    </style>
+ </head>
+ <body>
+
+    <p id="paragrafo">Cliccami</p>
+
+
+    <script>
+        //selezione elementi
+        let paragrafo = document.getElementById("paragrafo");
+
+        // event toggle
+        paragrafo.addEventListener("click", ()=> {
+            paragrafo.classList.toggle("attivo")
+        })
+
+    </script>
+    
+ </body>
+ </html>

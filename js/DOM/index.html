@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Lesson</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: antiquewhite;
+            height: 100dvh;
+        }
+
+        #container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+            width: 450px;
+            background-color: azure;
+        }
+        ul {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>LA MIA LISTA</h1>
+        <div id="input-box">
+            <input type="text" name="task-inp" id="task-inp">
+            <button id="btn-add">Aggiungi</button>
+        </div>
+        <ul id="lista-task">
+
+        </ul>
+
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", ()=> {
+            // selezione degli elementi
+            let inputBox = document.getElementById("task-inp");
+            let buttonAgg = document.getElementById("btn-add")
+            let listaUl = document.getElementById("lista-task");
+
+            //funzione di aggiunta attività
+            function addActivity () {
+                //prendi il valore dell'input
+                const textInput = inputBox.value.trim();
+
+                // messaggio se vuota
+                if (textInput ==="") {
+                    alert("Attività vuota")
+                }
+
+                //creare attività e bottone
+                const listItem = document.createElement("li")
+                const spaText = document.createElement("span")
+                const buttonRemove = document.createElement("button");
+                
+
+
+                //inserire testo dentro lo span
+                spaText.textContent = textInput;
+
+                //testo nel bottone elimina
+                buttonRemove.textContent = "Elimina";
+                buttonRemove.className = "btn-class"
+
+                //montiamo span e bittone dentro li
+                listItem.appendChild(spaText)
+                listItem.appendChild(buttonRemove)
+
+                //montiamo li dentro ul
+                listaUl.appendChild(listItem)
+
+                textInput.value = "";
+            }
+
+            //event listner ad aggiungi
+            buttonAgg.addEventListener("click", addActivity);
+
+            inputBox.addEventListener("keypress", (event) =>{
+                if (event.key === "Enter") {
+                    addActivity();
+                }
+            });
+
+            //funzione eliminare la lista
+            listaUl.addEventListener("click", (event) => {
+                const eleCliccato = event.target;
+
+                if (eleCliccato.classList.contains("btn-class")) {
+                    const listItem = eleCliccato.parentElement;
+                    listaUl .removeChild(listItem)
+                }
+
+            })
+
+
+
+
+        })
+    </script>
+</body>
+</html>

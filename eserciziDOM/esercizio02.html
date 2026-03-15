@@ -1,0 +1,33 @@
+<!-- Esercizio 2 — Cambiare colore
+HTML
+<p id="testo">Questo testo cambierà colore</p>
+<button id="colore">Cambia colore</button>
+Obiettivo
+Al click del bottone il testo diventa rosso.
+Concetti
+selezione DOM
+style.color -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESERCIZIO 02</title>
+</head>
+<body>
+    <p id="testo">Questo testo cambierà colore</p>
+    <button id="colore">Cambia colore</button>
+
+    <script>
+        //seleziona elementi
+        let testoP = document.getElementById("testo");
+        const buttonChange = document.getElementById("colore");
+
+        //add eventLIst
+        buttonChange.addEventListener("click", ()=> {
+            testoP.style.color = "red";
+        })
+    </script>
+</body>
+</html>

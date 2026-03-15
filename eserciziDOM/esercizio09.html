@@ -1,0 +1,43 @@
+<!-- 
+Esercizio 9 — Contatore caratteri
+
+HTML
+<textarea id="testo"></textarea>
+<p id="conteggio">0 caratteri</p>
+
+Obiettivo
+Mostrare quanti caratteri sono stati scritti nel textarea mentre l’utente digita.
+Concetti
+evento input
+.value.length
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea id="testo"></textarea>
+    <p id="conteggio">0 caratteri</p>
+
+
+
+    <script>
+        //
+        let textArea = document.getElementById("testo")
+        let paragrafo = document.getElementById("conteggio")
+        
+
+        textArea.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                let conteggio = textArea.value.length
+                paragrafo.textContent = conteggio + " caratteri";
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!-- 
+ Esercizio 6 — Aggiungere elementi alla lista
+HTML
+<input id="item">
+<button id="aggiungi">Aggiungi</button>
+
+<ul id="lista"></ul>
+Obiettivo
+Quando si clicca il bottone:
+viene creato un li
+il testo è quello dell’input
+viene aggiunto alla lista
+Concetti
+createElement
+appendChild -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESERCIZIO 06</title>
+</head>
+<body>
+    <input id="item">
+    <button id="aggiungi">Aggiungi</button>
+
+    <ul id="lista"></ul>
+
+
+
+    <script>
+        //select elements
+        let inputArea = document.getElementById("item")
+        const buttAdd = document.querySelector("#aggiungi")
+        const listaUl = document.getElementById("lista");
+
+        //crea elemento
+        let liElement = document.createElement("li");
+        
+
+        //evento click add litsta
+        buttAdd.addEventListener("click", ()=> {
+            //recupera il testo dall'input
+            liElement.textContent = inputArea.value;
+            //aggiungi elemento
+            listaUl.appendChild(liElement)
+        })
+
+
+
+    </script>
+</body>
+</html>
