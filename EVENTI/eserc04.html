@@ -1,0 +1,68 @@
+<!-- SCIA DEL PUNTATORE -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .box {
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    
+
+
+    <script>
+        let box = document.querySelectorAll(".box");
+
+        for (let i=0; i<box.length; i++) {
+            box[i].addEventListener("mouseenter", function(event){
+            let boxSelected = event.target;
+            boxSelected.style.backgroundColor = "blue";
+
+            box[i].addEventListener("mouseout", event =>{
+                let boxSelected = event.target;
+            boxSelected.style.backgroundColor = "white";
+            })
+        })
+        }
+        /* usiamo mouseenter come listener sul box dove passa il moure.
+            Usando querySelectorAll() selezioniamo tutti i box in forma di array per poi ciclarli con un ciclo FOR.
+            Per selezionare il box giustoed assegnarli il listener si usa box[i]
+        */
+    </script>
+</body>
+</html>

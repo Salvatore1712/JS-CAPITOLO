@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESERCIZIO DEL PALLONE</title>
+
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 90dvh;
+            overflow: hidden;
+        }
+        h1 {
+            position: absolute;
+            top: 5px;
+        }
+        #flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .pallone {
+            font-size: 55px;
+        }
+        .message {
+            position: absolute;
+            bottom: 5px;
+        }
+        .esplosione {
+            color: red;
+            position: absolute;
+            bottom: 35px;
+            font-size: 40px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>USO DI KEYDOWN</h1>
+    <br>
+    <div id="flex">
+        <p class="pallone">🎈</p>
+        <p class="message">Use 🔼 or 🔽 to increase air balloon</p>
+        <p class="esplosione">EXPLISON</p>
+    </div>
+    
+
+    <script>
+        //selezione elementi
+        let pallone = document.querySelector(".pallone");
+        let para03 = document.querySelector("p");
+        let dimensione = 55;
+        let esplosione = "💥"
+        let esploText = document.querySelector(".esplosione");
+        pallone.style.fontSize = dimensione+"px";
+        console.log(pallone.style.fontSize)
+
+
+        window.addEventListener("keydown", event =>{
+            console.log(event.key)
+            if (event.key === "ArrowUp") {
+                dimensione += 10
+                pallone.style.fontSize = dimensione + "px";
+                if (dimensione >= 250) {
+                    pallone.textContent = esplosione;
+                    esploText.style.display = "block";
+                }
+            } else if (event.key === "ArrowDown") {
+                dimensione -=10;
+                pallone.style.fontSize = dimensione + "px";
+                if (dimensione <250) {
+                    pallone.textContent = "🎈";
+                    esploText.style.display = "none";
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <input type="text" id="campoTesto">
+    <p class="testo"></p>
+
+    <form action="">
+        <legend>Nome</legend>
+        <input type="tex" name="" id="textField">
+        <input type="submit" value="INVIA" id="btnInvia">
+    </form>
+    <br><br>
+    <button>Clicca</button>
+    <p>No handle here</p>
+
+    <br><br>
+    <p id="para2">Un paragrafo con un bottone <button id="btn">CLICCA</button></p>
+
+
+    <script>
+        //**** LIVE PREVIEW
+        const fieldText = document.getElementById("campoTesto")
+        let paragrafo = document.querySelector(".testo");
+        const btnInvia = document.querySelector("#btnInvia");
+        let nome;
+
+        fieldText.addEventListener("input", function(){ //usa input per gestire gli input sul browser
+            paragrafo.textContent = fieldText.value; //prende il valore di fieldText
+        })
+
+        btnInvia.addEventListener("click", function(event){ // richiama sempre l'evento per poterlo manipolare tipo bloccare
+            nome = "salvatore";
+            event.preventDefault();
+        })
+
+        /* window.addEventListener("click", function(){
+            console.log("Cliccato")
+        })
+        */
+
+        let button = document.querySelector("button");
+        button.addEventListener("click", () =>{
+            console.log("bottone cliccato")
+        })
+
+        //propagazione delgli eventi
+        let paragrafo2 = document.getElementById("para2"); // selezione paragrafo
+        const btnPara = document.querySelector("#btn"); // selezione bottone in paragrafo
+
+        paragrafo2.addEventListener("mousedown", ()=> {
+            console.log("paragrafo maneggiato")
+        })
+
+        btnPara.addEventListener("mousedown", event =>{
+            console.log("bottone cliccato");
+            if (event.button == 0) event.stopPropagation();
+        })
+
+    </script>
+</body>
+</html>

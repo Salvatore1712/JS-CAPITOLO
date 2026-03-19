@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <ul class="lista">
+        <li>CIAO</li>
+        <li>HELLO</li>
+        <li>HOLA</li>
+    </ul>
+
+    <form>
+        <label for="name">name</label>
+        <input type="text" name="name" id="name">
+        <input type="submit" value="INVIA" id="submit">
+    </form>
+
+
+
+    <script>   
+        // aggiunge evento al genitore e con event.target si risale a quale tag è accaduto l'evento
+        // cattura lista
+        const lista = document.querySelector(".lista")
+
+        //eventListner alla lista principale
+        lista.addEventListener("click", function(eventi) {
+            let eleClick = event.target;
+            if (eleClick.tagName === "LI") {
+                console.log(eleClick)
+            }
+        })
+
+        let form = document.querySelector("form");
+        let nameForm = document.getElementById("name");
+
+        form.onsubmit = function (event) {
+            if (nameForm.valeu === "") {
+                event.preventDefault();
+                console.log("ERRORE")
+            }
+        }
+
+    </script>
+</body>
+</html>

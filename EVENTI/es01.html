@@ -1,0 +1,81 @@
+<!-- Livello 1 — Base (comprendere gli eventi)
+1. Click semplice
+Bottone → mostra un alert “Cliccato!”
+Concetti: addEventListener, click
+
+3. Cambiare colore
+Click su un bottone → cambia colore di sfondo della pagina
+Concetti: style
+
+4. Mouse hover
+Passando sopra un box → cambia colore
+Concetti: mouseover, mouseout
+
+5. Input in tempo reale
+Scrivi in un input → mostra il testo in un <p>
+Concetti: input event-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: blueviolet;
+        }
+    </style>
+
+</head>
+<body>
+    <button>CLICCAMI</button>
+    <p>testo placeholder</p>
+    <div class="box">
+        
+    
+    </div>
+    <!-- input -->
+    <h4>INPUT JS</h4>
+    <input type="text" id="field">
+    <input type="button" value="STAMPA" id="sendButton">
+    <p class="par02">0</p>
+
+
+
+
+    <script>
+        const bottone = document.querySelector("button"); //selezione bottone
+        let paragrafo = document.querySelector("p");
+        const boxDiv = document.querySelector(".box"); // selezione del box
+
+        const sendButton = document.querySelector("#sendButton")
+        let fieldForm = document.querySelector("#field")
+        let paragrafo02 = document.querySelector(".par02")
+
+        //evento sul bottone con alert
+        bottone.addEventListener("click", ()=> {
+            // alert("Bottone Cliccato!")
+            paragrafo.textContent = "Hai cliccato il bottone";
+            document.body.style.backgroundColor = "yellow";
+        })
+
+        // evento mouse hover e out
+        boxDiv.addEventListener("mouseover", function() {
+            boxDiv.style.backgroundColor = "red";
+        })
+
+        boxDiv.addEventListener("mouseout", function() {
+            boxDiv.style.backgroundColor = "blueviolet";
+        })
+
+
+        sendButton.addEventListener("click", function(e) {
+            let campo = fieldForm.value;
+            paragrafo02.textContent = campo;
+        })
+    </script>
+</body>
+</html>

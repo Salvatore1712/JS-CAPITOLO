@@ -1,0 +1,76 @@
+<!-- 
+🔹 Livello 2 — Intermedio (interazione utente)
+
+6. Toggle visibilità
+Bottone → mostra/nasconde un elemento
+Concetti: style.display
+
+7. Contatore
+Bottone “+” e “-” → aggiorna un numero
+Concetti: gestione stato
+
+8. Form base
+Submit form → blocca il refresh
+Mostra messaggio “Inviato”
+Concetti: submit, preventDefault()
+
+9. Tastiera
+Premi un tasto → mostra quale tasto è stato premuto
+Concetti: keydown
+
+10. Cambio immagine
+Click su thumbnail → cambia immagine principale
+Concetti: src
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 50px;
+        }
+        .cerchio{
+            margin: 0 auto;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: blanchedalmond;
+        }
+        .show {
+            display: none;
+        }
+    </style>
+ </head>
+ <body>
+    <!-- body page -->
+    <button id="btnShow">TOGGLE</button>
+    <div class="cerchio"></div>
+
+
+
+
+    <!-- javascript -->
+    <script>
+        let btnShow = document.querySelector("#btnShow")
+        let cerchio = document.querySelector(".cerchio");
+
+        btnShow.addEventListener("click", () => {
+            cerchio.classList.toggle("show")
+        })
+
+        document.body.addEventListener("keydown", (event)=> {
+            let premuto = event.key;
+            console.log(premuto);
+            console.log(event.code);
+        })
+        
+    </script>
+ </body>
+ </html>
