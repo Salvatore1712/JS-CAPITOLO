@@ -1,0 +1,102 @@
+<!-- 
+Un'organizzazione no profit chiamata EcoAware ti ha richiesto la creazione di uno strumento educativo per calcolare le emissioni di carbonio dei singoli utenti. Questo strumento li aiuterà a comprendere l'impatto ambientale delle loro attività quotidiane e a prendere decisioni più consapevoli per ridurre i consumi.
+
+Crea una serie di funzioni JavaScript che calcolano le emissioni di carbonio basate su vari fattori come il consumo di energia, l'uso di mezzi di trasporto e il consumo di carne.
+
+DETTAGLI SPECIFICI
+
+Lo script dovrà contenere le seguenti funzionalità, raggruppate in funzioni JavaScript:
+
+Calcolo delle emissioni energetiche: accetta come input un valore di consumo energetico in kWh e restituisce le emissioni di carbonio totali in kg (utilizzare il coefficiente di 0.233 kg di CO2 per kWh).
+Calcolo delle emissioni del trasporto: accetta come il chilometraggio percorso in auto in km e restituisce le emissioni di carbonio totali in kg (utilizzare il coefficiente di 0.21 kg di CO2 per km).
+Calcolo delle emissioni totali: accetta il valore di consumo energetico, e chilometraggio e utilizza le funzioni precedenti per calcolare le emissioni totali di carbonio.
+Per effettuare il testing delle tue funzioni, utilizza console.log con vari input e verifica che i risultati siano corretti.
+
+Scrivi il tuo codice come risposta in un unico messaggio e ti darò un feedback in tempo reale, cercando di aiutarti a capire cosa potrebbe essere utile per perfezionarlo e quali aspetti sono una scelta azzeccata!
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECOAWARE</title>
+    <style>
+        form {
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            font-family: Arial, Helvetica, sans-serif;
+            gap: 2px;
+        }
+        .inputBtn {
+            height: 25px;
+            background-color: rgb(33, 159, 159);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .inputBtn:hover {
+            background-color: rgb(29, 120, 120);
+            color: white;
+        }
+
+    </style>
+ </head>
+ <body>
+
+    <div class="container">
+        <h1>EcoAware</h1>
+        <h3>Calcolo emissioni CO<sup>2</sup></h3>
+
+        <form>
+            <label>Inserisci KWh</label>
+            <input type="text" name="kwh" id="kwhText">
+            <label>Inserisci KM</label>
+            <input type="text" name="kwh" id="kmText">
+            <br>
+            <button class="inputBtn">CALCOLA</button>
+            <p>Totale CO<sup>2</sup> è di: <span class="result"></span></p>
+        </form>
+
+    </div>
+
+
+    <!-- script -->
+    <script>
+        //selezione degli elementi
+        let inputKWhText = document.querySelector("#kwhText");
+        let inputKmText = document.querySelector("#kmText");
+        const btnCalcolo = document.querySelector(".inputBtn");
+        let risultatoTxt = document.querySelector(".result");
+
+        //funzione kwh in CO2
+        function calcoloCo2 (inputKW, inputKM) {
+            let coefficienteKW = 0.233 //kg per kwh di Co2
+            let coefficienteKM = 0.21 //kg per kM di Co2
+            let total; 
+            if(inputKM.value === "") {
+                inputKM.value = 0
+            } else if (inputKW.value === ""){
+                inputKW.value = 0
+            } else {
+                total = (coefficienteKW * Number(inputKW.value)) + (coefficienteKM * Number(inputKM.value));
+            }
+
+            return total;
+        }
+
+        btnCalcolo.addEventListener("click", (event)=>{
+            event.preventDefault()
+            risultatoTxt.textContent = calcoloCo2(inputKWhText, inputKmText) + " KG";
+        })
+
+
+
+
+    </script>
+
+ </body>
+ </html>

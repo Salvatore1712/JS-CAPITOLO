@@ -1,4 +1,5 @@
 
+
 let titolo = document.querySelector("#titolo");
 let paragrafo = document.querySelector(".paragrafo");
 
